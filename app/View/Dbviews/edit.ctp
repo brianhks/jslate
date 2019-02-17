@@ -18,8 +18,8 @@ if ($dashboard['Dashboard']['css'] != null) {
 </style>
 <h2>Edit widget</h2>
 <div class="form-inline">
-    <label class="checkbox"><input id="autosave" type="checkbox" checked="checked" onclick="$('#save').toggle();"/> Auto-save</label>
-    <button id="save" class="btn btn-small" style="display: none;" onclick="updatePreviewAndSave()">Save</button>
+    <label class="checkbox"><input id="autosave" type="checkbox" onclick="$('#save').toggle();"/> Auto-save</label>
+    <button id="save" class="btn btn-small" style="" onclick="updatePreviewAndSave()">Save</button>
 </div>
 
 <div class="row">

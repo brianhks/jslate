@@ -21,6 +21,7 @@ class DashboardsController extends AppController {
     }
 
     function view($id = null) {
+        $this->set('public', false);
         if (!$id) {
             $this->Session->setFlash(__('Invalid dashboard.'), 'error');
             return $this->redirect('/');
@@ -29,6 +30,11 @@ class DashboardsController extends AppController {
         if (!empty($dashboard) && $dashboard['Dashboard']['user_id'] == $this->Auth->user('id')) {
             $this->set('dashboard_id', $id);
             $this->set('dashboard', $dashboard);
+
+            $this->set('demo_user', false);
+            if (substr($this->Auth->user['email'], 0, 14) === 'jSlateDemoUser'){
+                $this->set('demo_user', true);
+            }
         } else {
             $this->Session->setFlash('Invalid dashboard.', 'error');
             return $this->redirect('/');
@@ -68,6 +74,7 @@ class DashboardsController extends AppController {
             throw new NotFoundException();
 
         $this->set('dashboard', $dashboard);
+        $this->set('public', true);
         $this->render('view');
     }
 
